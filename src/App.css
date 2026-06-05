@@ -1,0 +1,65 @@
+/* 应用主样式 */
+.app {
+  min-height: 100vh;
+  background: var(--color-ink-deep);
+}
+
+.app__main {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s var(--ease-out-expo) 0.3s, transform 1s var(--ease-out-expo) 0.3s;
+}
+
+.app__main--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 页面过渡装饰 */
+.app__main::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent) 20%,
+    var(--color-accent) 80%,
+    transparent
+  );
+  opacity: 0.15;
+}
+
+/* 分类切换过渡 */
+.category-header,
+.gallery-grid {
+  animation: fadeInUp 0.6s var(--ease-out-expo);
+}
+
+/* 全局滚动条装饰 */
+.app::-webkit-scrollbar {
+  width: 4px;
+}
+
+.app::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app::-webkit-scrollbar-thumb {
+  background: var(--color-ink-pale);
+  border-radius: 2px;
+}
+
+/* 页面背景纹理 */
+.app::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    transparent 0%,
+    rgba(10, 10, 10, 0.03) 100%
+  );
+}
